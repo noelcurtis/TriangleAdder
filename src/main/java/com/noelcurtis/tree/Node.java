@@ -3,7 +3,6 @@ package com.noelcurtis.tree;
 import java.util.*;
 
 /**
- * Created by IntelliJ IDEA.
  * User: noelcurtis
  * Date: 3/15/12
  * Time: 7:47 PM
@@ -16,8 +15,9 @@ import java.util.*;
  */
 public class Node<T> {
 
-    public T data;
-    public List<Node<T>> children;
+    private T data;
+    private List<Node<T>> children;
+    private Node<T> parent;
 
     /**
      * Default ctor.
@@ -70,15 +70,43 @@ public class Node<T> {
     }
 
     /**
+     * Returns true if Leaf node
+     * @return
+     */
+    public Boolean isLeafNode() {
+        if(children == null){
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Adds a child to the list of children for this Node<T>. The addition of
      * the first child will create a new List<Node<T>>.
      * @param child a Node<T> object to set.
      */
     public void addChild(Node<T> child) {
+        child.parent = this;
         if (children == null) {
             children = new ArrayList<Node<T>>();
         }
         children.add(child);
+    }
+
+    /**
+     * Use to get the parent of this Node
+     * @return
+     */
+    public Node<T> getParent() {
+        return parent;
+    }
+
+    /**
+     * Use to set the parent for this Node
+     * @param parent
+     */
+    public void setParent(Node<T> parent) {
+        this.parent = parent;
     }
 
     /**
@@ -88,6 +116,7 @@ public class Node<T> {
      * @throws IndexOutOfBoundsException if thrown.
      */
     public void insertChildAt(int index, Node<T> child) throws IndexOutOfBoundsException {
+        child.parent = this;
         if (index == getNumberOfChildren()) {
             // this is really an append
             addChild(child);

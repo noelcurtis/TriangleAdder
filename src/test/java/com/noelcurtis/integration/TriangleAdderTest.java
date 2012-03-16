@@ -1,5 +1,6 @@
 package com.noelcurtis.integration;
 
+import com.noelcurtis.adder.NodeData;
 import com.noelcurtis.tree.Node;
 import com.noelcurtis.tree.Tree;
 import org.junit.Assert;
@@ -59,6 +60,46 @@ public class TriangleAdderTest {
         try{
             List<List<String>> numberLists = TriangleAdder.getInstance().parseFile("data/test2.txt");
             Tree<Integer> newTree = TriangleAdder.getInstance().buildTree(numberLists);
+        }catch (Exception ex){
+            Assert.fail(ex.toString());
+        }
+    }
+
+    @Test
+    public void testBuildTreeOnTheFly(){
+        try{
+        TriangleAdder.getInstance().parseFile("data/test1.txt");
+        Tree<NodeData> newTree = TriangleAdder.getInstance().createTree();
+        }catch (Exception ex){
+            Assert.fail(ex.toString());
+        }
+    }
+
+    @Test
+    public void testBuildTreeOnTheFlyLarge(){
+        try{
+        TriangleAdder.getInstance().parseFile("data/test2.txt");
+        Tree<NodeData> newTree = TriangleAdder.getInstance().createTree();
+        }catch (Exception ex){
+            Assert.fail(ex.toString());
+        }
+    }
+
+    @Test
+    public void testFindLargestSum(){
+        try{
+            TriangleAdder.getInstance().parseFile("data/test1.txt");
+            assert TriangleAdder.getInstance().getLargestSum() == 27;
+        }catch (Exception ex){
+            Assert.fail(ex.toString());
+        }
+    }
+
+    @Test
+    public void testFindLargestSumLargerInput(){
+        try{
+            TriangleAdder.getInstance().parseFile("data/test2.txt");
+            System.out.println(TriangleAdder.getInstance().getLargestSum());
         }catch (Exception ex){
             Assert.fail(ex.toString());
         }
