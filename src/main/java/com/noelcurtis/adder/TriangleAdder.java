@@ -77,14 +77,14 @@ public class TriangleAdder {
             long numberForChild2 = Long.parseLong(this.numberLists.get(currentDepth + 1).get(currentPosition + 1));
             NodeData child1 = new NodeData(numberForChild1, node.getSumAtNode() + numberForChild1, currentPosition, currentDepth + 1);
             NodeData child2 = new NodeData(numberForChild2, node.getSumAtNode() + numberForChild2, currentPosition +1, currentDepth + 1);
-            findLargestSum(child1);
-            findLargestSum(child2);
+            if(child1.getSumAtNode() > child2.getSumAtNode())
+                findLargestSum(child1);
+            else
+                findLargestSum(child2);
         }else{
             if(node.getSumAtNode() > this.largestSum){
                 this.largestSum = node.getSumAtNode();
-//                if(this.largestSum >= 598521)
-                    System.out.println(this.largestSum);
-            }
+                }
         }
     }
 
