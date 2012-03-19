@@ -84,7 +84,7 @@ public class TriangleAdder {
         }else{
             if(node.getSumAtNode() > this.largestSum){
                 this.largestSum = node.getSumAtNode();
-                }
+            }
         }
     }
 
