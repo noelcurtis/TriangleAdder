@@ -44,7 +44,6 @@ public class TriangleAdderTest {
         }
     }
 
-    @Ignore
     @Test
     public void testFindLargestSumLargerInput(){
         try{
