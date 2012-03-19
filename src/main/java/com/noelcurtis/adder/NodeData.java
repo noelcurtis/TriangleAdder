@@ -7,31 +7,31 @@ package com.noelcurtis.adder;
  */
 public class NodeData {
 
-    private int sumAtNode;
-    private int number;
+    private long sumAtNode;
+    private long number;
     private int positionInList;
     private int levelInTree;
 
-    public NodeData(int number, int sumAtNode, int positionInList, int levelInTree){
+    public NodeData(long number, long sumAtNode, int positionInList, int levelInTree){
         this.sumAtNode = sumAtNode;
         this.number = number;
         this.positionInList = positionInList;
         this.levelInTree = levelInTree;
     }
 
-    public int getSumAtNode() {
+    public long getSumAtNode() {
         return sumAtNode;
     }
 
-    public void setSumAtNode(int sumAtNode) {
+    public void setSumAtNode(Long sumAtNode) {
         this.sumAtNode = sumAtNode;
     }
 
-    public int getNumber() {
+    public long getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Long number) {
         this.number = number;
     }
 
@@ -52,8 +52,6 @@ public class NodeData {
     }
 
     public String toString(){
-//        return "Number: "+ this.number + " Sum: " + this.sumAtNode + " Position: "+ this.positionInList;
-//        return Integer.toString(this.number);
-        return Integer.toString(this.number) +":"+ Integer.toString(this.sumAtNode);
+        return Long.toString(this.number) +":"+ Long.toString(this.sumAtNode);
     }
 }

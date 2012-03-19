@@ -1,13 +1,9 @@
 package com.noelcurtis.integration;
 
-import com.noelcurtis.adder.NodeData;
-import com.noelcurtis.tree.Node;
-import com.noelcurtis.tree.Tree;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import com.noelcurtis.adder.TriangleAdder;
-
-import java.util.AbstractMap;
 import java.util.List;
 
 /**
@@ -39,67 +35,21 @@ public class TriangleAdderTest {
     }
 
     @Test
-    public void simpleEntity(){
-        AbstractMap.SimpleEntry<Integer, Integer> newNode  = new AbstractMap.SimpleEntry(0, 0);
-        System.out.print(newNode);
-    }
-
-    @Test
-    public void testBuildTree(){
-        try{
-        List<List<String>> numberLists = TriangleAdder.getInstance().parseFile("data/test1.txt");
-        Tree<Integer> newTree = TriangleAdder.getInstance().buildTree(numberLists);
-        System.out.println(newTree.toString());
-        }catch (Exception ex){
-            Assert.fail(ex.toString());
-        }
-    }
-
-    @Test
-    public void testBuildLargeTree(){
-        try{
-            List<List<String>> numberLists = TriangleAdder.getInstance().parseFile("data/test2.txt");
-            Tree<Integer> newTree = TriangleAdder.getInstance().buildTree(numberLists);
-        }catch (Exception ex){
-            Assert.fail(ex.toString());
-        }
-    }
-
-    @Test
-    public void testBuildTreeOnTheFly(){
-        try{
-        TriangleAdder.getInstance().parseFile("data/test1.txt");
-        Tree<NodeData> newTree = TriangleAdder.getInstance().createTree();
-        }catch (Exception ex){
-            Assert.fail(ex.toString());
-        }
-    }
-
-    @Test
-    public void testBuildTreeOnTheFlyLarge(){
-        try{
-        TriangleAdder.getInstance().parseFile("data/test2.txt");
-        Tree<NodeData> newTree = TriangleAdder.getInstance().createTree();
-        }catch (Exception ex){
-            Assert.fail(ex.toString());
-        }
-    }
-
-    @Test
     public void testFindLargestSum(){
         try{
             TriangleAdder.getInstance().parseFile("data/test1.txt");
-            assert TriangleAdder.getInstance().getLargestSum() == 27;
+            assert TriangleAdder.getInstance().findLargestSum() == 27;
         }catch (Exception ex){
             Assert.fail(ex.toString());
         }
     }
 
+    @Ignore
     @Test
     public void testFindLargestSumLargerInput(){
         try{
             TriangleAdder.getInstance().parseFile("data/test2.txt");
-            System.out.println(TriangleAdder.getInstance().getLargestSum());
+            System.out.println(TriangleAdder.getInstance().findLargestSum());
         }catch (Exception ex){
             Assert.fail(ex.toString());
         }
